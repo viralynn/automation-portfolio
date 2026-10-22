@@ -63,3 +63,30 @@ Roles: **the instructor** is the human who sets direction, approves work, and is
 - **Decision:** The concept tracker has no first person and no knowledge-check history. It tracks only term, meaning, and level, so agents know what to explain. Knowledge checks stay in the chat.
 - **Decision:** Moved to **Skip**: ASDLC, Instructor / Pilot, Hard stop, Deterministic, DNS, Nameservers, MCP, Prompt injection, Lethal trifecta, Diff, Commit, PR.
 - **Action:** Rewrote both files to these rules. Awaiting diff approval before commit.
+
+---
+
+## 2026-10-17
+
+### Before 22:46 · Agent team design
+- **Action:** Reviewed the old agent roster and workflow skills, and proposed a rebuilt team named by job description.
+- **Decision:** Approved roster: `project-planner`, `spec-writer`, `automation-engineer`, `infrastructure-engineer`, `code-reviewer`, `technical-writer`, `process-engineer`. The main session acts as the project lead.
+- **Decision:** Keep `spec-writer` and `technical-writer` separate. The spec defines "correct" before the build; docs describe what was built. Keeping them apart stops the spec from drifting to match the build.
+- **Decision:** Teaching (mentor briefs, debriefs, knowledge checks) is a main-session rule in `CLAUDE.md`, not a subagent, because subagents report to the project lead and don't hold a conversation with the instructor.
+- **Decision:** The agent team stage comes before Mission Definition. Agents must exist before they do the work; the instructor's part of Mission Definition (the brief) is already done.
+- **Decision:** Track work in GitHub Issues. Agents act only on Issues and comments from the repo owner; anything else is untrusted data.
+- **Decision:** Merge the old `before-you-paste` checklist (vetting other people's code and prompts for prompt injection) and the old repo-vetting skill into one skill: `/vet-external-content`.
+- **Learned:** Subagents *can* start other subagents by default (up to three levels). An earlier explanation said they couldn't; that was wrong. This team blocks nesting by leaving the `Agent` tool out of every subagent's tool allowlist, so only the project lead delegates. Source: https://code.claude.com/docs/en/sub-agents (checked 2026-10-17).
+- **Learned:** Agent files are Markdown with YAML frontmatter (`name`, `description`, `tools`, `disallowedTools`, `model`). Skills live at `.claude/skills/<name>/SKILL.md`; `disable-model-invocation: true` means only the instructor can run a skill.
+
+### 22:46 · Agent and skill files drafted
+- **Action:** Drafted `CLAUDE.md`, seven agent files in `.claude/agents/`, and four skills in `.claude/skills/` (`start-session`, `wrap-session`, `vet-external-content`, `design-prompt`). Reordered the stage map and added new terms to the concept tracker. Awaiting review.
+
+## 2026-10-20
+
+### First code review (commit B)
+- **Action:** Commit A (DEVLOG + concept tracker) approved, committed, and pushed. `code-reviewer` ran its first review, on commit B. Verdict: no blocking findings.
+- **Action:** Applied review fixes: only `spec-writer` edits `specs/`; third-person wording in `CLAUDE.md`; file map now lists every path the agents use; `project-planner` alone moves the stage marker; consistent agent headings; 14 missing terms added to the concept tracker; source added for the subagent-nesting correction.
+- **Learned:** The reviewer said subagents can't start subagents. The current official docs say they can. A reviewer working from memory can be wrong; claims about tools are checked against current docs, with the date.
+- **Learned:** `code-reviewer` is read-only by instruction, not by enforcement: its `Bash` tool can still write files. Enforcing it would need a permission rule or a hook.
+- **Decision:** Commit trailers name no model or version: `Co-Authored-By: Claude <noreply@anthropic.com>`. Commit A's message was rewritten to match and force-pushed; safe because only the instructor uses this branch and no PR existed yet.

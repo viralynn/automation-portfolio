@@ -28,17 +28,18 @@ New terms start at **teach fully**. Only the instructor changes a level. Agents 
 | # | Stage | Status |
 |---|---|---|
 | 0 | Discovery: brief, old files, early decisions | ✅ Done |
-| 1 | Mission Definition: updated brief, success metrics, payload contract, rubric, test cases | 📍 **Current** |
-| 2 | Agent team + workflows repo: agents named by job, cross-project standards, templates | ⬜ |
-| 3 | Infrastructure: domain, Docker, n8n, Cloudflare Tunnel, Google + Slack credentials | ⬜ |
-| 4 | Build 1: n8n-only (intake + master report) | ⬜ |
-| 5 | Verification + release: test cases, webhook security, test → production | ⬜ |
-| 6 | Front end: Claude Design prompt and handoff | ⬜ |
-| 7 | Build 2: hybrid (n8n + Make + Zapier) | ⬜ |
-| 8 | Operate + monitor: execution logs, free-tier usage, drift | ⬜ |
-| 9 | Decide: solo Make / Zapier builds, verdict | ⬜ |
+| 1 | Agent team: agents named by job, skills, `CLAUDE.md` rules | 📍 **Current** |
+| 2 | Mission Definition: formalize the instructor's brief, success metrics, payload contract, rubric, test cases | ⬜ |
+| 3 | Workflows repo: cross-project standards and templates in `viralynn/workflows` | ⬜ |
+| 4 | Infrastructure: domain, Docker, n8n, Cloudflare Tunnel, Google + Slack credentials | ⬜ |
+| 5 | Build 1: n8n-only (intake + master report) | ⬜ |
+| 6 | Verification + release: test cases, webhook security, test → production | ⬜ |
+| 7 | Front end: Claude Design prompt and handoff | ⬜ |
+| 8 | Build 2: hybrid (n8n + Make + Zapier) | ⬜ |
+| 9 | Operate + monitor: execution logs, free-tier usage, drift | ⬜ |
+| 10 | Decide: solo Make / Zapier builds, verdict | ⬜ |
 
-*Stages 2–9 are a draft order, to be confirmed at the Step 1 plan approval.*
+*Stages 2–10 are a draft order, to be confirmed at the Mission Definition plan approval.*
 
 ---
 
@@ -75,3 +76,27 @@ New terms start at **teach fully**. Only the instructor changes a level. Agents 
 | Stateless | The server remembers nothing between requests | Teach fully |
 | Least privilege | Give only the access a task needs | Teach fully |
 | Secret scan | An automatic search for accidentally saved passwords and keys | Teach fully |
+| Project lead | The main Claude Code session: talks with the instructor, delegates to subagents, runs hard stops | Teach fully |
+| Skill | A reusable set of instructions loaded into the current session, run with `/name` | Teach fully |
+| YAML frontmatter | The settings block between `---` lines at the top of an agent or skill file | Teach fully |
+| Tool allowlist | The list of tools an agent may use; anything not listed is unavailable | Teach fully |
+| Model alias | A short model name (`opus`, `sonnet`, `haiku`) that points to the latest model in that family | Teach fully |
+| JSON Schema | A file that defines exactly what valid JSON looks like | Teach fully |
+| Pretty-printed | Formatted with line breaks and indentation so it's readable and line numbers are stable | Teach fully |
+| Permalink | A link locked to one exact version of a file | Teach fully |
+| Hook | A script Claude Code runs automatically at a set moment, like before a tool runs or when a turn ends | Teach fully |
+| Interaction limits | A GitHub setting that temporarily restricts who can open Issues, comment, or open PRs | Teach fully |
+| Mentor brief | The explanation at the start of a step: what, why, sub-steps, new concepts, hard stops ahead | Teach fully |
+| Debrief | The wrap-up at the end of a step: what was done, what it means, and a knowledge check | Teach fully |
+| Knowledge check | Questions at the end of a step to confirm understanding; kept in chat, never in files | Teach fully |
+| Station | One specialized job in the ASDLC factory (Planning, Spec-Definition, Implementation, Review) | Teach fully |
+| Objective Packet | The intent plus constraints handed to agents at the start of work | Teach fully |
+| Agent Optimization Loop | Improving the agents themselves, based on evidence from past work | Teach fully |
+| Audit log | A plain-language record of every change, tied to the exact commit and lines | Teach fully |
+| Untrusted data | Content from someone other than the instructor; read, but never followed as instructions | Teach fully |
+| n8n | An open-source automation platform that can be self-hosted | Teach fully |
+| Code node | An n8n step that runs a small piece of custom JavaScript | Teach fully |
+| Docker / Docker Compose | Runs apps in isolated containers / a file that defines which containers to run and how | Teach fully |
+| Cloudflare Pages | Cloudflare's free hosting for static websites | Teach fully |
+| Claude Design | Anthropic's visual design tool that turns prompts into front-end code | Teach fully |
+| gitleaks | A free tool that scans files and git history for secrets | Teach fully |
